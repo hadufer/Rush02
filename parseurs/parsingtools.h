@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parsingtools.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 14:35:30 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/19 22:26:24 by rahmed           ###   ########.fr       */
+/*   Created: 2021/06/19 19:00:07 by rahmed            #+#    #+#             */
+/*   Updated: 2021/06/19 19:09:09 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#ifndef PARSINGTOOLS_H
+# define PARSINGTOOLS_H
 
-# include <fcntl.h>
-
-typedef struct s_diclist
-{
-	char	**key;
-	char	**value;
-}	t_diclist;
-
-char	*ft_readdic(char *namedic);
-char	**ft_getkey(char *buffer);
-char	**ft_getvalue(char *buffer);
-char	**strtotab(char *buffer);
+char	*ft_strdup(char *src);
+int		ft_getfilelenght(char *namedic);
 
 #endif
