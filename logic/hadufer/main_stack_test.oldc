@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_number.h                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 16:01:31 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/19 16:37:56 by hadufer          ###   ########.fr       */
+/*   Created: 2021/06/19 14:31:09 by hadufer           #+#    #+#             */
+/*   Updated: 2021/06/19 16:50:08 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef CHECK_NUMBER_H
-# define CHECK_NUMBER_H
-char	**cut_str_blocks3(char *str);
-int		get_size(char *str);
-int		ft_strlen(char *str);
-#endif
+#include "stack.h"
+#include <stdio.h>
+int	main()
+{
+	t_stack	*h_stack;
+
+	h_stack = init();
+	h_stack = push_stack(h_stack, "test");
+	h_stack = pop_stack(h_stack);
+	{
+		printf("%s\n", h_stack->data);
+		h_stack = h_stack->next;
+	}
+}

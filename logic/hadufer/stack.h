@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_number.h                                     :+:      :+:    :+:   */
+/*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 16:01:31 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/19 16:37:56 by hadufer          ###   ########.fr       */
+/*   Created: 2021/06/19 14:33:36 by hadufer           #+#    #+#             */
+/*   Updated: 2021/06/19 16:48:17 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef CHECK_NUMBER_H
-# define CHECK_NUMBER_H
-char	**cut_str_blocks3(char *str);
-int		get_size(char *str);
-int		ft_strlen(char *str);
+#ifndef STACK_H
+# define STACK_H
+# include <stdlib.h>
+typedef struct s_stack{
+	char			*data;
+	struct s_stack	*next;
+}					t_stack;
+t_stack	*push_stack(t_stack *stack, char *data);
+t_stack	*pop_stack(t_stack *stack);
+t_stack	*init(void);
 #endif

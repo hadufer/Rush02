@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_number.h                                     :+:      :+:    :+:   */
+/*   match.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 16:01:31 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/19 16:37:56 by hadufer          ###   ########.fr       */
+/*   Created: 2021/06/19 16:33:59 by hadufer           #+#    #+#             */
+/*   Updated: 2021/06/19 17:43:31 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef CHECK_NUMBER_H
-# define CHECK_NUMBER_H
-char	**cut_str_blocks3(char *str);
-int		get_size(char *str);
-int		ft_strlen(char *str);
-#endif
+#ifndef MATCH_H
+# include "test.h" // a enlever
+# define MATCH_H
+int	ft_strcmp(char *str1, char *str2);
+char	*match(t_diclist *diclist, char *search);
+# endif

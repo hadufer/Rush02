@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_number.h                                     :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 16:01:31 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/19 16:37:56 by hadufer          ###   ########.fr       */
+/*   Created: 2021/06/19 16:53:57 by hadufer           #+#    #+#             */
+/*   Updated: 2021/06/19 16:55:56 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef CHECK_NUMBER_H
-# define CHECK_NUMBER_H
-char	**cut_str_blocks3(char *str);
-int		get_size(char *str);
-int		ft_strlen(char *str);
+#ifndef TEST_H
+# define TEST_H
+# include "stack.h"
+typedef struct s_diclist
+{
+	char	**key;
+	char	**value;
+	t_stack	*stack;
+}			t_diclist;
+
 #endif
