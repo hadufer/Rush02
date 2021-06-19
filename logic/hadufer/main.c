@@ -67,7 +67,7 @@ int	main(int ac, char **av)
 	i = 0;
 	while (i < 29)
 	{
-		number[i] = malloc(sizeof(*number) * 3);
+		number[i] = malloc(sizeof(*number) * 4);
 		alphabetic_representation[i] = malloc(sizeof(*alphabetic_representation) * 12);
 		i++;
 	}
@@ -102,6 +102,6 @@ int	main(int ac, char **av)
 	diclist->value = alphabetic_representation;
 	diclist->stack = init();
 	char	*test;
-	asprintf(&test,"218");
+	asprintf(&test,"5218");
 	solver(diclist, test);
 }
