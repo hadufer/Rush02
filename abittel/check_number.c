@@ -6,11 +6,10 @@
 /*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:13:42 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/19 15:54:38 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/19 16:03:12 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
-#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
