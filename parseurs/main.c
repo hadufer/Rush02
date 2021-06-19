@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/19 18:02:45 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/19 22:38:49 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -15,11 +15,32 @@
 int	main(void)//(int argc, char **argv)
 {
 /*TESTS*/
+t_diclist test;
 char *str;
+char *str2;
+//char **key;
+//char **value;
 	str = ft_readdic("test.dict");
-	//////ft_putstr(str);
-	str = ft_trimspaces(str);
-	ft_putstr(str);
+	test.key = ft_getkey(str);
+	//free(str);
+	ft_putstr("---KEY LIST---\n");
+	int i = 0;
+	while (test.key[i])
+	{
+		ft_putstr(test.key[i]);
+		i++;
+	}
+	str2 = ft_readdic("test.dict");
+	test.value = ft_getvalue(str2);
+	//free(str2);
+	ft_putstr("---VALUE LIST---\n");
+//	ft_putstr(value);
+	int j = 0;
+	while (test.value[j])
+	{
+		ft_putstr(test.value[j]);
+		j++;
+	}
 /*
 	int		val;
 	char	*strdic;

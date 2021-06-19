@@ -6,13 +6,13 @@
 #    By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/19 08:17:49 by rahmed            #+#    #+#              #
-#    Updated: 2021/06/19 08:31:24 by rahmed           ###   ########.fr        #
+#    Updated: 2021/06/19 20:26:57 by rahmed           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = rush-02
 
-SRC = main.c parsing.c
+SRC = *.c *.h
 
 all: $(NAME)
 
