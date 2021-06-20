@@ -6,20 +6,11 @@
 /*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:13:42 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/19 16:08:54 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 11:15:22 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "utils.h"
 #include <stdlib.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i = i + 1;
-	return (i);
-}
 
 char	*put_zero(char *str, int size)
 {
