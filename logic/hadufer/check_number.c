@@ -6,20 +6,23 @@
 /*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:13:42 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/20 19:54:14 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 20:05:07 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
 #include <stdlib.h>
 
-int	is_good_number(char *str)
+int	get_good_number(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
-		if (!is_number(str[i++]))
-			return (0);
+	{
+		if (!is_number(str[i]))
+			str[i] = 0;
+		i = i + 1;
+	}
 	return (1);
 }
 

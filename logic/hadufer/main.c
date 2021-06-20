@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 19:54:15 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 20:06:37 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -18,7 +18,8 @@
 #include "solver.h"
 
 int	cond_prepars(int argc, char **argv, char **readdic, char **str)
-{	if (argc == 2)
+{
+	if (argc == 2)
 	{
 		*(readdic) = ft_strdup("numbers.dict");
 		*str = argv[1];
@@ -30,10 +31,10 @@ int	cond_prepars(int argc, char **argv, char **readdic, char **str)
 	}
 	else
 	{
-		ft_putstr("Error\n");
+		ft_putstr ("Error\n");
 		return (0);
 	}
-	if (!is_good_number(*str))
+	if (!is_number((*str)[0]) || !get_good_number(*str))
 	{
 		ft_putstr("Error\n");
 		return (0);
