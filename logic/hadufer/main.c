@@ -21,8 +21,8 @@ int	len(long nb)
 char	*ft_itoa(int nb)
 {
 	char *str;
-	long	n;
-	int		i;
+	int	n;
+	int	i;
 
 	n = nb;
 	i = len(n);
@@ -53,19 +53,20 @@ char	*ft_itoa(int nb)
 #include "check_number.h"
 #include "test.h"
 #include <stdio.h>
-int	main(int ac, char **av)
+int	main(void)
 {
 	// creating two **char array to link numbers and alphabetic_representation with an index
 	char **number; 
 	char **alphabetic_representation;
-	int	i;
-	int	j;
+	int 	i;
 	int	number_fill;
-	char alpha[29][12] = {{"zero"},{"one"},{"two"},{"three"},{"four"},{"five"},{"six"},{"seven"},{"eight"},{"nine"},{"ten"},{"eleven"},{"twelve"},{"thirteen"},{"fourteen"},{"fifteen"},{"sixteen"},{"seventeen"},{"eighteen"},{"nineteen"},{"twenty"},{"thirty"},{"forty"},{"fifty"},{"sixty"},{"seventy"},{"eighty"},{"ninety"},{"hundred"}};
-	number = (char **)malloc(sizeof(char *) * 29);
-	alphabetic_representation = (char **)malloc(sizeof(char *) * 29);
+	int	size;
+	char alpha[41][12] = {{"zero"},{"one"},{"two"},{"three"},{"four"},{"five"},{"six"},{"seven"},{"eight"},{"nine"},{"ten"},{"eleven"},{"twelve"},{"thirteen"},{"fourteen"},{"fifteen"},{"sixteen"},{"seventeen"},{"eighteen"},{"nineteen"},{"twenty"},{"thirty"},{"forty"},{"fifty"},{"sixty"},{"seventy"},{"eighty"},{"ninety"},{"hundred"}, {"thousand"},{"million"},{"billion"},{"trillion"},{"quadrillion"},{"quintillion"},{"sextillion"},{"septillion"},{"octillion"},{"nonillion"},{"decillion"},{"undecillion"}};
+	size = 31;
+	number = (char **)malloc(sizeof(char *) * size);
+	alphabetic_representation = (char **)malloc(sizeof(char *) * size);
 	i = 0;
-	while (i < 29)
+	while (i < size)
 	{
 		number[i] = malloc(sizeof(*number) * 4);
 		alphabetic_representation[i] = malloc(sizeof(*alphabetic_representation) * 12);
@@ -74,7 +75,7 @@ int	main(int ac, char **av)
 	i = 0;
 	number_fill = 0;
 	// filling numbers tab
-	while (i < 29)
+	while (i < size)
 	{
 		if (i <= 19)
 		{
@@ -82,19 +83,38 @@ int	main(int ac, char **av)
 			i++;
 			number_fill++;
 		}
-		else
+		else if ( i >= 20 && i < 28)
 		{
 			number[i] = ft_itoa(number_fill);
 			i++;
 			number_fill += 10;
 		}
+		else if (i == 28)
+		{
+			number[i] = ft_itoa(number_fill);
+			i++;
+			number_fill *= 10;
+		}
+		else
+		{
+			number[i] = ft_itoa(number_fill);
+			i++;
+			number_fill = number_fill * 10 * 10 * 10;
+		}
 	}
 	i = 0;
-	while (i < 29)
+	while (i < size)
 	{
 		alphabetic_representation[i] = alpha[i]; 
 		i++;
 	}
+	/* Afficher les tableaux pour tester 
+	i = 0;
+	while (i < size)
+	{
+		printf("Number : %s\n Alphabet repr : %s\n", number[i],alphabetic_representation[i]);
+		i++;
+	} */
 	i = 0;
 	t_diclist	*diclist;
 	diclist = malloc(sizeof(diclist));
