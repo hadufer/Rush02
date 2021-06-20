@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:37:46 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/19 22:41:39 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/20 10:14:39 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ char	*ft_readdic(char *namedic)
 }
 
 //Clean first part and return to struct KEY 
-char	**ft_getkey(char *buffer)
+char	*ft_getkey(char *buffer)
 {
 	char		*tmpbuf;
 	int			ibuf;
 	int			i;
 	int			newline;
-	t_diclist	*list = NULL;
+//	char		**key;
 
 	tmpbuf = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
 	ibuf = 0;
@@ -74,22 +74,23 @@ char	**ft_getkey(char *buffer)
 			i++;
 		}
 	}
+	tmpbuf[i] = '\0';
 	free(buffer);
 /*Nous avons un STR de mots separes par \n liste testee OK*/
-	list->key = strtotab(tmpbuf);
-	//	buffer = ft_strdup(tmpbuf);
+	//key = strtotab(tmpbuf);
+	buffer = ft_strdup(tmpbuf);
 	free(tmpbuf);
-	return (list->key);
+	return (buffer);
 }
 
 //trim and get last part of list
-char	**ft_getvalue(char *buffer)
+char	*ft_getvalue(char *buffer)
 {
 	char		*tmpbuf;
 	int			ibuf;
 	int			i;
 	int			newline;
-	t_diclist	*list = NULL;
+	//t_diclist	*list = NULL;
 
 	tmpbuf = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
 	ibuf = 0;
@@ -116,12 +117,13 @@ char	**ft_getvalue(char *buffer)
 			i++;
 		}
 	}
+	tmpbuf[i] = '\0';
 	free(buffer);
 /*Nous avons un STR de mots separes par \n liste testee OK*/
-	list->value = strtotab(tmpbuf);
-	//buffer = ft_strdup(tmpbuf);
+	//list->value = strtotab(tmpbuf);
+	buffer = ft_strdup(tmpbuf);
 	free(tmpbuf);
-	return (list->value);
+	return (buffer);
 }
 
 char	**strtotab(char *buffer)
@@ -165,6 +167,7 @@ char	**strtotab(char *buffer)
 			j++;
 			ibuf++;
 		}
+		tbl[i][j] = '\0';
 		i++;
 		j = 0;
 		ibuf++;
