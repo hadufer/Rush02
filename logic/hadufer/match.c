@@ -6,7 +6,7 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:21:32 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/19 17:43:21 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 20:07:14 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*match(t_diclist *diclist, char *search)
 	i = 0;
 	while (diclist->key[i])
 	{
-		if(!ft_strcmp(diclist->key[i], search))
+		if (!ft_strcmp(diclist->key[i], search))
 			return (diclist->value[i]);
 		i++;
 	}

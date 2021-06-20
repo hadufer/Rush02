@@ -6,7 +6,7 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:59:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 18:58:41 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 20:15:38 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	is_blank_number(char **blocks)
 
 	i = 0;
 	while (blocks[i])
-		if(!is_block_zero(blocks[i++]))
+		if (!is_block_zero(blocks[i++]))
 			return (0);
 	return (1);
 }
@@ -103,7 +103,7 @@ int	first_pass(t_diclist *diclist, char **blocks, int i)
 	return (1);
 }
 
-int	back_pass_util(t_diclist *diclist, char **blocks, int *i, int *j)
+int	back_pass_util (t_diclist *diclist, char **blocks, int *i, int *j)
 {
 	if (!*j)
 	{
@@ -153,7 +153,8 @@ int	solver(t_diclist *diclist, char *input)
 	while (i >= 0)
 	{
 		if (!is_block_zero(blocks[i]))
-			if (!fill_tens_words(diclist,blocks,i) || !first_pass(diclist, blocks, i) || !back_pass(diclist, blocks, i))
+			if (!fill_tens_words(diclist, blocks, i) || \
+!first_pass(diclist, blocks, i) || !back_pass(diclist, blocks, i))
 				return (0);
 		i--;
 	}
