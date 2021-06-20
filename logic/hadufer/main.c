@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 20:22:45 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 20:24:16 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -80,4 +80,6 @@ size_tab(diclist->key) != size_tab(diclist->value))
 		ft_putstr("Dict Error\n");
 	if (!solver(diclist, str))
 		ft_putstr("Error\n");
+	free_tabs(diclist->key);
+	free_tabs(diclist->value);
 }
