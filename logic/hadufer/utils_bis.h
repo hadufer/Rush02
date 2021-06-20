@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   match.h                                            :+:      :+:    :+:   */
+/*   utils_bis.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 16:33:59 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 17:07:24 by hadufer          ###   ########.fr       */
+/*   Created: 2021/06/20 18:00:10 by hadufer           #+#    #+#             */
+/*   Updated: 2021/06/20 18:01:08 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATCH_H
-# include "struct.h"
-# define MATCH_H
-int	ft_strcmp(char *str1, char *str2);
-char	*match(t_diclist *diclist, char *search);
-# endif
+#ifndef UTILS_BIS_H
+# define UTILS_BIS_H
+int	ft_strcmp(char *s1, char *s2);
+#ifndef

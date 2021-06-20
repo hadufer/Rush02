@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 09:23:38 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 17:36:51 by rahmed           ###   ########.fr       */
+/*   Created: 2021/06/19 16:53:57 by hadufer           #+#    #+#             */
+/*   Updated: 2021/06/20 17:06:22 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
-
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdbool.h>
-
-bool	is_space(char c);
-bool	is_number(char c);
-bool	is_printable(char c);
-int		ft_strlen(char *str);
-void	ft_putstr(char *str);
+#ifndef STRUCT_H
+# define STRUCT_H
+# include "stack.h"
+typedef struct s_diclist
+{
+	char	**key;
+	char	**value;
+	t_stack	*stack;
+}			t_diclist;
 
 #endif

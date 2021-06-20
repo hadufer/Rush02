@@ -6,7 +6,7 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:32:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 12:28:08 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 17:32:27 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,16 @@ t_stack	*init(void)
 
 int	print_tab_clear(t_stack *stack)
 {
-	while (stack)
+	while (stack->next)
 	{
 		if (stack->data)
 		{
-			// METTRE UN COMPTEUR DANS DICLIST ET LE FAIRE
 			ft_putstr(stack->data);
-			ft_putstr(".");
+			if (stack->next->next)
+				ft_putstr(" ");
 		}
 		stack = pop_stack(stack);
 	}
+	stack = pop_stack(stack);
 	return (1);
 }

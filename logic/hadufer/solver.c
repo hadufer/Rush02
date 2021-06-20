@@ -6,14 +6,14 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:59:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 12:18:15 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 17:21:47 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "match.h"
 #include "stack.h"
 #include "check_number.h"
-#include "test.h"
+#include "struct.h"
 #include "utils.h"
 
 #include <stdio.h>
@@ -26,6 +26,20 @@ int	nb_blocks(char **blocks)
 	while (blocks[i])
 		i = i + 1;
 	return (i);
+}
+
+int	is_block_zero(char *block)
+{
+	int	i;
+
+	i = 0;
+	while (block[i])
+	{
+		if (block[i] != '0')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	fill_tens_words(t_diclist *diclist, char **blocks, int index)
@@ -62,7 +76,7 @@ int	first_pass(t_diclist *diclist, char **blocks, int i)
 	j = 0;
 	while (blocks[i][j])
 	{
-		if (match(diclist, blocks[i] + j))
+		if (blocks[i][j] != '0' && match(diclist, blocks[i] + j))
 		{
 			diclist->stack
 				= push_stack(diclist->stack, match(diclist, blocks[i] + j));
@@ -114,15 +128,15 @@ int	back_pass(t_diclist *diclist, char **blocks, int i)
 int	solver(t_diclist *diclist, char *input)
 {
 	int		i;
-	char	*tmp;
 	char	**blocks;
 
 	blocks = cut_str_blocks3(input);
 	i = nb_blocks(blocks) - 1;
 	while (i >= 0)
 	{
-		if (!fill_tens_words(diclist,blocks,i) || !first_pass(diclist, blocks, i) || !back_pass(diclist, blocks, i))
-			return (0);
+		if (!is_block_zero(blocks[i]))
+			if (!fill_tens_words(diclist,blocks,i) || !first_pass(diclist, blocks, i) || !back_pass(diclist, blocks, i))
+				return (0);
 		i--;
 	}
 	print_tab_clear(diclist->stack);
