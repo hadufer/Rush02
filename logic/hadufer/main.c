@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 21:12:14 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 21:18:47 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "parsingtools.h"
 #include "struct.h"
 #include "solver.h"
+#include "utils.h"
 
 int	cond_prepars(int argc, char **argv, char **readdic, char **str)
 {
