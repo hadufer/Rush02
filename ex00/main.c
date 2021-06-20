@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 23:11:01 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 23:23:17 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	check_readdic(t_diclist *diclist, char *readdic)
 		diclist->key = ft_getkey(ft_readdic(readdic));
 		diclist->value = ft_getvalue(ft_readdic(readdic));
 		diclist->stack = init();
-		free(readdic);
 		return (1);
 	}
 }
