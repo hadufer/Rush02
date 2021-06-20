@@ -56,13 +56,13 @@ char	*ft_itoa(int nb)
 int	main(void)
 {
 	// creating two **char array to link numbers and alphabetic_representation with an index
-	char **number; 
+	char **number;
 	char **alphabetic_representation;
 	int 	i;
 	int	number_fill;
 	int	size;
 	char alpha[41][12] = {{"zero"},{"one"},{"two"},{"three"},{"four"},{"five"},{"six"},{"seven"},{"eight"},{"nine"},{"ten"},{"eleven"},{"twelve"},{"thirteen"},{"fourteen"},{"fifteen"},{"sixteen"},{"seventeen"},{"eighteen"},{"nineteen"},{"twenty"},{"thirty"},{"forty"},{"fifty"},{"sixty"},{"seventy"},{"eighty"},{"ninety"},{"hundred"}, {"thousand"},{"million"},{"billion"},{"trillion"},{"quadrillion"},{"quintillion"},{"sextillion"},{"septillion"},{"octillion"},{"nonillion"},{"decillion"},{"undecillion"}};
-	size = 31;
+	size = 32;
 	number = (char **)malloc(sizeof(char *) * size);
 	alphabetic_representation = (char **)malloc(sizeof(char *) * size);
 	i = 0;
@@ -122,6 +122,6 @@ int	main(void)
 	diclist->value = alphabetic_representation;
 	diclist->stack = init();
 	char	*test;
-	asprintf(&test,"5218");
+	asprintf(&test,"0");
 	solver(diclist, test);
 }

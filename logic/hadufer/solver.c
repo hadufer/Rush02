@@ -6,7 +6,7 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:59:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/19 21:19:17 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 11:27:03 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "stack.h"
 #include "check_number.h"
 #include "test.h"
+#include "utils.h"
 
 #include <stdio.h>
 
@@ -102,13 +103,12 @@ int	back_pass(t_diclist *diclist, char **blocks, int i)
 {
 	int	j;
 
-	j = 0;
-	while (blocks[i][j] && blocks[i][j] != '0')
-		j = j + 1;
-	j--;
+	j = 2;
 	while (j >= 0)
 	{
-		if (!back_pass_util(diclist, blocks, &i, &j))
+		if (blocks[i][j] == '0')
+			j--;
+		else if (!back_pass_util(diclist, blocks, &i, &j))
 			return (0);
 	}
 	return (1);
@@ -129,11 +129,6 @@ int	solver(t_diclist *diclist, char *input)
 		back_pass(diclist, blocks, i);
 		i-- ;
 	}
-	while (diclist->stack)
-	{
-		printf("%s\n", diclist->stack->data);
-		if (diclist->stack)
-			diclist->stack = pop_stack(diclist->stack);
-	}
+	print_tab_clear(diclist->stack);
 	return (1);
 }

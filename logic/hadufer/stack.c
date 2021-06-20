@@ -6,11 +6,12 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:32:35 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/19 18:19:48 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 11:18:15 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "utils.h"
 
 t_stack	*push_stack(t_stack *stack, char *data)
 {
@@ -49,4 +50,19 @@ t_stack	*init(void)
 	tmp->next = NULL;
 	tmp->data = NULL;
 	return (tmp);
+}
+
+int	print_tab_clear(t_stack *stack)
+{
+	while (stack)
+	{
+		if (stack->data)
+		{
+			ft_putstr(stack->data);
+			if (stack->next)
+				ft_putstr(" ");
+		}
+		stack = pop_stack(stack);
+	}
+	return (1);
 }
