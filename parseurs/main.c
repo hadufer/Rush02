@@ -6,16 +6,14 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 11:55:13 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/20 20:39:48 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
 #include "parsing.h"
 
-int	main(void)//(int argc, char **argv)
+int	main(void)
 {
-/*TESTS*/
-//t_diclist test;
 char *str;
 //char *str2;
 char **key;
@@ -23,27 +21,34 @@ char **value;
 	str = ft_readdic("test.dict");
 
 	key = ft_getkey(str);
-	ft_putstr("---KEY LIST---\n");
-	int i = 0;
-	while (key[i] != NULL)
+	if(key == NULL)
 	{
-		ft_putstr(key[i]);
-		ft_putstr("\n");
-		i++;
+		free(key);
 	}
-	free(key);
+	else
+	{
+		ft_putstr("---KEY LIST---\n");
+		int i = 0;
+		while (key[i] != NULL)
+		{
+			ft_putstr(key[i]);
+			ft_putstr("\n");
+			i++;
+		}
+		free(key);
 
-	str = ft_readdic("test.dict");
-	value = ft_getvalue(str);
-	ft_putstr("---VALUE LIST---\n");
-	int j = 0;
-	while (value[j] != NULL)
-	{
-		ft_putstr(value[j]);
-		ft_putstr("\n");
-		j++;
+		str = ft_readdic("test.dict");
+		value = ft_getvalue(str);
+		ft_putstr("---VALUE LIST---\n");
+		int j = 0;
+		while (value[j] != NULL)
+		{
+			ft_putstr(value[j]);
+			ft_putstr("\n");
+			j++;
+		}
+		free(value);
 	}
-	free(value);
 /*
 	int		val;
 	char	*strdic;

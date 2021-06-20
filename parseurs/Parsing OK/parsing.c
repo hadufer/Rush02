@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:37:46 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 17:37:48 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/20 20:36:10 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,20 @@ char	*ft_readdic(char *namedic)
 	buffer = NULL;
 	lenbuffer = ft_getfilelenght(namedic);
 	if (lenbuffer == 0)
-		ft_putstr("Dict Error\n");
+		return (NULL);
 	fd = open(namedic, O_RDONLY);
 	if (fd == -1)
-		ft_putstr("Dict Error\n");
+		return (NULL);
 	if (fd == 3)
 	{
 		buffer = malloc(sizeof(char) * (lenbuffer + 1));
 		read(fd, buffer, lenbuffer);
 		buffer[lenbuffer] = '\0';
 		if (close (fd) == -1)
-			ft_putstr("Dict Error\n");
+		{
+			free(buffer);
+			return (NULL);
+		}
 	}
 	return (buffer);
 }
@@ -50,9 +53,8 @@ void	parsekey(struct s_getvars *var, char *buffer)
 {
 	while (is_number(buffer[var->ibuf]))
 		var->tmpbuf[var->i++] = buffer[var->ibuf++];
-	while ((is_space(buffer[var->ibuf])) || (buffer[var->ibuf] == ':'))
-		var->ibuf++;
-	while (is_printable(buffer[var->ibuf]))
+	while (((is_printable(buffer[var->ibuf])) || (is_space(buffer[var->ibuf])) \
+			|| (buffer[var->ibuf] == ':')) && !(buffer[var->ibuf] == '\n'))
 		var->ibuf++;
 	if (buffer[var->ibuf] == '\n')
 	{
@@ -73,11 +75,10 @@ char	**ft_getkey(char *buffer)
 	while (var.newline == 0)
 	{
 		var.newline = 1;
+		while (buffer[var.ibuf] == '\n')
+			var.ibuf++;
 		if (is_printable(buffer[var.ibuf]) && !(is_number(buffer[var.ibuf])))
-		{
-			ft_putstr("Dict Error\n");
-			return (0);
-		}
+			return (NULL);
 		parsekey(&var, buffer);
 	}
 	var.tmpbuf[var.i] = '\0';
@@ -92,15 +93,15 @@ char	**ft_getvalue(char *buffer)
 {
 	struct s_getvars	var;
 
-	var.ibuf = 0;
-	var.newline = 0;
-	var.i = 0;
+	initstructvar(&var);
 	var.tmpbuf = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
 	while (var.newline == 0)
 	{
 		var.newline = 1;
-		while ((is_number(buffer[var.ibuf])) || (is_space(buffer[var.ibuf])) \
-				|| (buffer[var.ibuf] == ':'))
+		while (((is_printable(buffer[var.ibuf])) || \
+				(is_space(buffer[var.ibuf]))) && (buffer[var.ibuf] != ':'))
+			var.ibuf++;
+		while (is_space(buffer[var.ibuf]) || (buffer[var.ibuf] == ':'))
 			var.ibuf++;
 		while (is_printable(buffer[var.ibuf]))
 			var.tmpbuf[var.i++] = buffer[var.ibuf++];
