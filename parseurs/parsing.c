@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:37:46 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 12:09:48 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/20 14:54:42 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**ft_getkey(char *buffer)
 	int			ibuf;
 	int			i;
 	int			newline;
-	cft_getkey(str);har		**key;
+	char		**key;
 
 	tmpbuf = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
 	ibuf = 0;
@@ -55,8 +55,11 @@ char	**ft_getkey(char *buffer)
 	while (newline == 0)
 	{
 		newline = 1;
-		//AJOUTER GESTION TYPE ATOI '-' ou letters 
-		if (is
+		if (is_printable(buffer[ibuf]) && !(is_number(buffer[ibuf]))) 
+		{
+			ft_putstr("Dict Error\n");
+			return (0);
+		}
 		while (is_number(buffer[ibuf]))
 		{
 			tmpbuf[i] = buffer[ibuf];
@@ -124,31 +127,29 @@ char	**ft_getvalue(char *buffer)
 
 char	**strtotab(char *buffer)
 {
-	char	**tbl;
 	int		i;
 	int		imax;
 	int		j;
 	int		ibuf;
 	int		icount;
 	int		lenbuf;
+	char	**tbl;
 
+	i = 0;
+	imax = 0;
+	j = 0;
+	ibuf = 0;
 	icount = 0;
 	lenbuf = 0;
-	i = 0;
-	j = 0;
-	imax = 0;
-	ibuf = 0;
-/*COUNT lines */
 	while (buffer[ibuf])
 	{
 		if (buffer[ibuf] == '\n')
 			imax++;
 		ibuf++;
 	}
-	imax++; // pour la derniere ligne
+	imax++;
 	ibuf = 0;
 	tbl = malloc(sizeof(char *) * (imax + 1));
-	//ft_putstr("JE SUIS : apres malloc i STRTOTAB !\n"); // TEST
 	while (i < imax - 1)
 	{
 		while (buffer[icount] != '\n')
@@ -157,9 +158,8 @@ char	**strtotab(char *buffer)
 			icount++;
 		}
 		lenbuf++;
-		icount++; //passer le \n
+		icount++;
 		tbl[i] = malloc(sizeof(char) * (lenbuf + 1));
-	//ft_putstr("JE SUIS : apres malloc J STRTOTAB !\n"); // TEST
 		while (buffer[ibuf] != '\n')
 		{
 			tbl[i][j] = buffer[ibuf];
@@ -171,114 +171,7 @@ char	**strtotab(char *buffer)
 		j = 0;
 		ibuf++;
 		lenbuf = 0;
-	//ft_putstr("JE SUIS : apres BOUCLE -- i++ --  STRTOTAB !\n"); // TEST
 	}
-	//ft_putstr("JE SUIS : FIN BOUCLE -- i --  STRTOTAB !\n"); // TEST
-	//tbl[i] = malloc(sizeof(char));
-	tbl[i] = NULL; // mettre a null?
-	//ft_putstr("JE SUIS : fin STRTOTAB !\n"); // TEST
+	tbl[i] = NULL;
 	return (tbl);
 }
-
-/*Bkp
-//Clean Whitespaces
-char	*ft_trimspaces(char *buffer)
-{
-	char	*tmpbuf;
-	int		ibuf;
-	int		i;
-	int		newline;
-
-	tmpbuf = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
-	ibuf = 0;
-	newline = 0;
-	i = 0;
-	while (newline == 0)
-	{
-		newline = 1;
-		while (is_number(buffer[ibuf])) //AJOUTER GESTION TYPE ATOI '-' ou letters 
-		{
-			tmpbuf[i] = buffer[ibuf];
-			i++;
-			ibuf++;
-		}
-		while (is_space(buffer[ibuf]))
-			ibuf++;
-		if (buffer[ibuf] == ':')
-		{
-			tmpbuf[i] = buffer[ibuf];
-			ibuf++;
-			i++;
-		}
-		while (is_space(buffer[ibuf]))
-			ibuf++;
-		while (is_printable(buffer[ibuf]))
-		{
-			tmpbuf[i] = buffer[ibuf];
-			ibuf++;
-			i++;
-		}
-		if (buffer[ibuf] == '\n')
-		{
-			newline = 0;
-			tmpbuf[i] = buffer[ibuf];
-			ibuf++;
-			i++;
-		}
-	}
-	free(buffer);
-	buffer = ft_strdup(tmpbuf);
-	free(tmpbuf);
-	return (buffer);
-}
-//Clean Whitespaces
-char	*ft_trimspaces(char *buffer)
-{
-	char	*tmpbuf;
-	int		ibuf;
-	int		i;
-	int		newline;
-
-	tmpbuf = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
-	ibuf = 0;
-	newline = 0;
-	i = 0;
-	while (newline == 0)
-	{
-		newline = 1;
-		while (is_number(buffer[ibuf])) //AJOUTER GESTION TYPE ATOI '-' ou letters 
-		{
-			tmpbuf[i] = buffer[ibuf];
-			i++;
-			ibuf++;
-		}
-		while (is_space(buffer[ibuf]))
-			ibuf++;
-		if (buffer[ibuf] == ':')
-		{
-			tmpbuf[i] = buffer[ibuf];
-			ibuf++;
-			i++;
-		}
-		while (is_space(buffer[ibuf]))
-			ibuf++;
-		while (is_printable(buffer[ibuf]))
-		{
-			tmpbuf[i] = buffer[ibuf];
-			ibuf++;
-			i++;
-		}
-		if (buffer[ibuf] == '\n')
-		{
-			newline = 0;
-			tmpbuf[i] = buffer[ibuf];
-			ibuf++;
-			i++;
-		}
-	}
-	free(buffer);
-	buffer = ft_strdup(tmpbuf);
-	free(tmpbuf);
-	return (buffer);
-}
-*/
