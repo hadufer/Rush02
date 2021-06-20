@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:37:46 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 10:35:59 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/20 12:09:48 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**ft_getkey(char *buffer)
 	int			ibuf;
 	int			i;
 	int			newline;
-	char		**key;
+	cft_getkey(str);har		**key;
 
 	tmpbuf = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
 	ibuf = 0;
@@ -55,8 +55,9 @@ char	**ft_getkey(char *buffer)
 	while (newline == 0)
 	{
 		newline = 1;
-		while (is_number(buffer[ibuf]))
 		//AJOUTER GESTION TYPE ATOI '-' ou letters 
+		if (is
+		while (is_number(buffer[ibuf]))
 		{
 			tmpbuf[i] = buffer[ibuf];
 			i++;
@@ -76,9 +77,7 @@ char	**ft_getkey(char *buffer)
 	}
 	tmpbuf[i] = '\0';
 	free(buffer);
-/*Nous avons un STR de mots separes par \n liste testee OK*/
 	key = strtotab(tmpbuf);
-	//buffer = ft_strdup(tmpbuf);
 	free(tmpbuf);
 	return (key);
 }
@@ -99,7 +98,6 @@ char	**ft_getvalue(char *buffer)
 	while (newline == 0)
 	{
 		newline = 1;
-		//AJOUTER GESTION TYPE ATOI '-' ou letters 
 		while ((is_number(buffer[ibuf])) || (is_space(buffer[ibuf])) \
 				|| (buffer[ibuf] == ':'))
 			ibuf++;
@@ -119,17 +117,8 @@ char	**ft_getvalue(char *buffer)
 	}
 	tmpbuf[i] = '\0';
 	free(buffer);
-/*Nous avons un STR de mots separes par \n liste testee OK*/
 	value = strtotab(tmpbuf);
-	//buffer = ft_strdup(tmpbuf);
 	free(tmpbuf);
-
-for (int k = 0; k < i; k++) // TEST
-{
-	ft_putstr(value[k]);
-}
-
-
 	return (value);
 }
 
@@ -159,15 +148,18 @@ char	**strtotab(char *buffer)
 	imax++; // pour la derniere ligne
 	ibuf = 0;
 	tbl = malloc(sizeof(char *) * (imax + 1));
-	while (i < imax)
+	//ft_putstr("JE SUIS : apres malloc i STRTOTAB !\n"); // TEST
+	while (i < imax - 1)
 	{
 		while (buffer[icount] != '\n')
 		{
 			lenbuf++;
 			icount++;
 		}
+		lenbuf++;
 		icount++; //passer le \n
 		tbl[i] = malloc(sizeof(char) * (lenbuf + 1));
+	//ft_putstr("JE SUIS : apres malloc J STRTOTAB !\n"); // TEST
 		while (buffer[ibuf] != '\n')
 		{
 			tbl[i][j] = buffer[ibuf];
@@ -179,8 +171,12 @@ char	**strtotab(char *buffer)
 		j = 0;
 		ibuf++;
 		lenbuf = 0;
+	//ft_putstr("JE SUIS : apres BOUCLE -- i++ --  STRTOTAB !\n"); // TEST
 	}
-	tbl[imax][j] = '\0'; // mettre a null?
+	//ft_putstr("JE SUIS : FIN BOUCLE -- i --  STRTOTAB !\n"); // TEST
+	//tbl[i] = malloc(sizeof(char));
+	tbl[i] = NULL; // mettre a null?
+	//ft_putstr("JE SUIS : fin STRTOTAB !\n"); // TEST
 	return (tbl);
 }
 
