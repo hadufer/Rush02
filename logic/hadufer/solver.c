@@ -6,7 +6,7 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:59:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 11:27:03 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 12:18:15 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ int	fill_tens_words(t_diclist *diclist, char **blocks, int index)
 	tens[0] = '1';
 	i = 1;
 	while (i < ((size_tab - index - 1) * 3 + 1))
-	{
-		tens[i] = '0';
-		i = i + 1;
-	}
+		tens[i++] = '0';
 	tens[i] = 0;
 	if (match(diclist, tens))
 		diclist->stack
@@ -124,10 +121,9 @@ int	solver(t_diclist *diclist, char *input)
 	i = nb_blocks(blocks) - 1;
 	while (i >= 0)
 	{
-		fill_tens_words(diclist,blocks,i);
-		first_pass(diclist, blocks, i);
-		back_pass(diclist, blocks, i);
-		i-- ;
+		if (!fill_tens_words(diclist,blocks,i) || !first_pass(diclist, blocks, i) || !back_pass(diclist, blocks, i))
+			return (0);
+		i--;
 	}
 	print_tab_clear(diclist->stack);
 	return (1);
