@@ -6,7 +6,7 @@
 /*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 21:18:47 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 21:57:19 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ int	main(int argc, char **argv)
 	char		*readdic;
 	char		*str;
 
-	if (!cond_prepars(argc, argv, &readdic, &str))
+	if (!cond_prepars(argc, argv, &readdic, &str) || !ft_readdic(readdic))
 	{
+		if (!ft_readdic(readdic))
+			ft_putstr("Error\n");
 		free(readdic);
 		return (0);
 	}
@@ -82,7 +84,7 @@ int	main(int argc, char **argv)
 	if (!diclist->value || !diclist->key || \
 size_tab(diclist->key) != size_tab(diclist->value))
 		ft_putstr("Dict Error\n");
-	if (!solver(diclist, str))
+	else if (!solver(diclist, str))
 		ft_putstr("Error\n");
 	free_tabs(diclist->key);
 	free_tabs(diclist->value);
