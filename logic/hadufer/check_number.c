@@ -6,11 +6,22 @@
 /*   By: abittel <abittel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:13:42 by abittel           #+#    #+#             */
-/*   Updated: 2021/06/20 11:15:22 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 19:00:44 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
 #include <stdlib.h>
+
+int	is_good_number(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		if (!is_number(str[i++]))
+			return (0);
+	return (1);
+}
 
 char	*put_zero(char *str, int size)
 {
@@ -31,6 +42,17 @@ int	get_size(char *str)
 	if (ft_strlen(str) % 3 != 0)
 		size++;
 	return (size);
+}
+
+int	free_blocks(char **blocks)
+{
+	int	i;
+
+	i = 0;
+	while (blocks[i])
+		free(blocks[i++]);
+	free(blocks);
+	return (1);
 }
 
 char	**cut_str_blocks3(char *str)

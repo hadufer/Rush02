@@ -6,7 +6,7 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:59:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 18:24:45 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 18:58:41 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,6 @@ int	solver(t_diclist *diclist, char *input)
 		i--;
 	}
 	print_tab_clear(diclist->stack);
+	free_blocks(blocks);
 	return (1);
 }
