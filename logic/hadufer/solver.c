@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:59:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 20:15:38 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 21:05:14 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ int	fill_tens_words(t_diclist *diclist, char **blocks, int index)
 	size_tab = nb_blocks(blocks);
 	tens = malloc(sizeof (char ) * ((size_tab - index - 1) * 3 + 2));
 	if (((size_tab - index - 1) * 3 + 1) == 1)
+	{
+		free(tens);
 		return (1);
+	}
 	tens[0] = '1';
 	i = 1;
 	while (i < ((size_tab - index - 1) * 3 + 1))

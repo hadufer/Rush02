@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hadufer <hadufer@student.42nice.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 20:24:16 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 21:12:14 by hadufer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "utils.h"
+
 #include "parsing.h"
 #include "check_number.h"
 #include "match.h"
@@ -70,16 +70,21 @@ int	main(int argc, char **argv)
 	char		*str;
 
 	if (!cond_prepars(argc, argv, &readdic, &str))
+	{
+		free(readdic);
 		return (0);
+	}
 	diclist = malloc(sizeof(t_diclist));
 	diclist->key = ft_getkey(ft_readdic(readdic));
 	diclist->value = ft_getvalue(ft_readdic(readdic));
 	diclist->stack = init();
 	if (!diclist->value || !diclist->key || \
-size_tab(diclist->key) != size_tab(diclist->value)) 
+size_tab(diclist->key) != size_tab(diclist->value))
 		ft_putstr("Dict Error\n");
 	if (!solver(diclist, str))
 		ft_putstr("Error\n");
 	free_tabs(diclist->key);
 	free_tabs(diclist->value);
+	free(readdic);
+	free(diclist);
 }
