@@ -6,11 +6,11 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 18:00:10 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 18:01:08 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 18:20:38 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_BIS_H
 # define UTILS_BIS_H
-int	ft_strcmp(char *s1, char *s2);
-#ifndef
+//int	ft_strcmp(char *s1, char *s2);
+#endif

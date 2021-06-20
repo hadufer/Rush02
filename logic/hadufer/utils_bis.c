@@ -6,14 +6,14 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 17:58:56 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 17:59:52 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 18:20:53 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils_bis.h"
 #include "utils.h"
 
-int	ft_strcmp(char *s1, char *s2)
+/*int	ft_strcmp(char *s1, char *s2)
 {
 	char	*tmp_1;
 	char	*tmp_2;
@@ -32,4 +32,4 @@ int	ft_strcmp(char *s1, char *s2)
 		tmp_2++;
 	}
 	return (*tmp_1 - *tmp_2);
-}
+}*/

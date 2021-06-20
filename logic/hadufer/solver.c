@@ -6,7 +6,7 @@
 /*   By: hadufer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 16:59:23 by hadufer           #+#    #+#             */
-/*   Updated: 2021/06/20 17:21:47 by hadufer          ###   ########.fr       */
+/*   Updated: 2021/06/20 18:24:45 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@ int	is_block_zero(char *block)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	is_blank_number(char **blocks)
+{
+	int	i;
+
+	i = 0;
+	while (blocks[i])
+		if(!is_block_zero(blocks[i++]))
+			return (0);
 	return (1);
 }
 
@@ -131,6 +142,13 @@ int	solver(t_diclist *diclist, char *input)
 	char	**blocks;
 
 	blocks = cut_str_blocks3(input);
+	if (is_blank_number(blocks))
+	{
+		diclist->stack
+			= push_stack(diclist->stack, match(diclist, "0"));
+		print_tab_clear(diclist->stack);
+		return (1);
+	}
 	i = nb_blocks(blocks) - 1;
 	while (i >= 0)
 	{
