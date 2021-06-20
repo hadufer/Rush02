@@ -122,6 +122,6 @@ int	main(void)
 	diclist->value = alphabetic_representation;
 	diclist->stack = init();
 	char	*test;
-	asprintf(&test,"0");
+	asprintf(&test,"99999");
 	solver(diclist, test);
 }
