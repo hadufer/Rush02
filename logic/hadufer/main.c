@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 08:34:08 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 18:57:56 by abittel          ###   ########.fr       */
+/*   Updated: 2021/06/20 19:54:15 by abittel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "utils.h"
@@ -41,6 +41,17 @@ int	cond_prepars(int argc, char **argv, char **readdic, char **str)
 	return (1);
 }
 
+int	free_tabs(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_diclist	*diclist;
@@ -53,6 +64,8 @@ int	main(int argc, char **argv)
 	diclist->key = ft_getkey(ft_readdic(readdic));
 	diclist->value = ft_getvalue(ft_readdic(readdic));
 	diclist->stack = init();
+	if (!diclist->value || !diclist->key)
+		ft_putstr("Dict Error\n");
 	if (!solver(diclist, str))
 		ft_putstr("Error\n");
 }
