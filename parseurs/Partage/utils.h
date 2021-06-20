@@ -6,7 +6,7 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 09:23:38 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/19 17:44:15 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/20 17:36:51 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-#include <stdbool.h>
+# include <stdbool.h>
 
 bool	is_space(char c);
 bool	is_number(char c);

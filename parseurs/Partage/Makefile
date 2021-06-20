@@ -6,7 +6,7 @@
 #    By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/19 08:17:49 by rahmed            #+#    #+#              #
-#    Updated: 2021/06/20 10:15:50 by rahmed           ###   ########.fr        #
+#    Updated: 2021/06/20 17:42:15 by rahmed           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC = *.c
 all: $(NAME)
 
 $(NAME):
-	cc -Wall -Wextra -Werror -o $(NAME) $(SRC) && ./rush-02 | cat -e
+	cc -Wall -Wextra -Werror -o $(NAME) $(SRC)
 
 clean:
 	rm -f *.o *.gch *.swp

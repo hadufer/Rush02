@@ -6,31 +6,13 @@
 /*   By: rahmed <rahmed@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:59:58 by rahmed            #+#    #+#             */
-/*   Updated: 2021/06/20 15:05:08 by rahmed           ###   ########.fr       */
+/*   Updated: 2021/06/20 17:38:05 by rahmed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-#include "utils.h"
 #include "parsingtools.h"
-
-char	*ft_strdup(char *src)
-{
-	char	*tab;
-	int		i;
-	int		lensrc;
-
-	i = 0;
-	lensrc = ft_strlen(src);
-	tab = (char *)malloc(sizeof(char *) * (lensrc + 1));
-	while (i < lensrc)
-	{
-		tab[i] = src[i];
-		i++;
-	}
-	tab[i] = '\0';
-	return (tab);
-}
+#include "utils.h"
 
 //Get the buffer lenght
 int	ft_getfilelenght(char *namedic)
@@ -51,4 +33,47 @@ int	ft_getfilelenght(char *namedic)
 			return (0);
 	}
 	return (lenbuffer);
+}
+
+void	initstruct(struct s_countvars *cvar)
+{
+	cvar->i = 0;
+	cvar->imax = 0;
+	cvar->j = 0;
+	cvar->ibuf = 0;
+	cvar->icount = 0;
+	cvar->lenbuf = 0;
+}
+
+void	pushtab(struct s_countvars *cvar, char *buffer)
+{
+	while (buffer[cvar->icount++] != '\n')
+		cvar->lenbuf++;
+	cvar->icount++;
+	cvar->tbl[cvar->i] = malloc(sizeof(char) * (cvar->lenbuf + 2));
+	while (buffer[cvar->ibuf] != '\n')
+		cvar->tbl[cvar->i][cvar->j++] = buffer[cvar->ibuf++];
+	cvar->tbl[cvar->i++][cvar->j] = '\0';
+	cvar->j = 0;
+	cvar->ibuf++;
+	cvar->lenbuf = 0;
+}
+
+char	**strtotab(char *buffer)
+{
+	struct s_countvars	cvar;
+
+	initstruct(&cvar);
+	while (buffer[cvar.ibuf])
+	{
+		if (buffer[cvar.ibuf++] == '\n')
+			cvar.imax++;
+	}
+	cvar.imax++;
+	cvar.ibuf = 0;
+	cvar.tbl = malloc(sizeof(char *) * (cvar.imax + 1));
+	while (cvar.i < cvar.imax - 1)
+		pushtab(&cvar, buffer);
+	cvar.tbl[cvar.i] = NULL;
+	return (cvar.tbl);
 }
